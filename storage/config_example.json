@@ -1,0 +1,9 @@
+{
+  "database": {
+    "host": "db host",
+    "user": "db user",
+    "password": "db password",
+    "name": "db name",
+    "driver": "db driver"
+  }
+}

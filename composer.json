@@ -1,0 +1,18 @@
+{
+  "require": {
+    "twig/twig": "^2.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app",
+      "Core\\": "core"
+    },
+    "files": [
+      "core/helpers.php"
+    ],
+    "classmap": [
+      "app/",
+      "core"
+    ]
+  }
+}

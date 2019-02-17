@@ -1,0 +1,304 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %} Анахата йога - студія {% endblock %}
+
+{%  block content %}
+
+<!-- Preloader -->
+<div class="preloader">
+    <img class="preloader-img" src="images/loader/anahata.svg" width="300px" height="300px"  align="middle">
+</div>
+
+<!-- Button To Top -->
+<a class="btn-top">
+    <i class="fa fa-arrow-up"></i>
+</a>
+
+<!-- Main Image -->
+<header id="Main">
+    <div class="fullScreenImg parallax">
+        <div class="main-text-box">
+            <h1 class="main-text">
+                Анахата
+            </h1>
+            <span class="main-span">місце, де ти є</span>
+        </div>
+    </div>
+</header>
+
+<!-- Navigation -->
+<nav id="app">
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a class="navLink" onclick="closeNav()" href="#Main">Головна</a>
+            <a class="navLink" onclick="closeNav()" href="#AboutMe">Про нас</a>
+            <a class="navLink" onclick="closeNav()" href="#Gallery">Галерея</a>
+            <a class="navLink" onclick="closeNav()" href="#Schedule">Розклад</a>
+            <a class="navLink" onclick="closeNav()" href="#News">Новини</a>
+            <a class="navLink" onclick="closeNav()" href="#Contacts">Контакти</a>
+        </div>
+    </div>
+    <button class="hamburger hamburger--collapse" type="button" onclick="openNav()">
+      <span class="hamburger-box fixHamb" id="hambFadeIn">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+</nav>
+
+<!-- About Me -->
+<section class="py-5" id="AboutMe">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <blockquote class="blockquote text-right">
+                    <p class="about-p">
+                        Анахата – це місце. Особливе місце у нашому внутрішньому всесвіті, де свідомість урівноважується з енергією, народжуючи центр Буття. Його неможливо знищити, він не має кордонів, над ним не має влади час. Перебуваючи у стані нерухливого полум'ї свічки у нерухливому просторі, він вічно сяє вогнем непереборної істини.
+                    </p>
+                    <footer class="blockquote-footer custom-blockquote">Гуру Йогі Адьянатх Махарадж</footer>
+                </blockquote>
+                <p class="about-p-2">
+                    Практика хатха йоги в сучасному розумінні з певних причин набула хибного вираження. Ми не претендуємо на істинність методу, та для нас є важливим нагадати, змістити орієнтир до першоджерел. На наших заняттях ми пропонуємо Вам Вас же самих. Ми пропонуємо шлях самозаглиблення, самопізнання, самовиявлення  через такі інструменти йоги, як асана, пранаяма, концентрація, медитація. Шлях не простий, проте сповнений життя.
+                </p>
+                <p class="about-p-2">
+                    Йога студія Анахата
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section class="py-5" id="Gallery">
+    <div class="container">
+        <div class="tz-gallery">
+            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row pb-5">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 gall-mb-5">
+                                <a class="lightbox" href="images/gallery/last/9.jpg">
+                                    <img src="images/gallery/last/9.jpg" class="img-fluid" alt="Bridge">
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 gall-mb-5">
+                                <a class="lightbox" href="../storage/images/gallery/last/10.jpg">
+                                    <img src="images/gallery/last/10.jpg" class="img-fluid" alt="Bridge">
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 gall-mb-5">
+                                <a class="lightbox" href="../storage/images/gallery/last/2.jpg">
+                                    <img src="images/gallery/last/2.jpg" class="img-fluid" alt="Bridge">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row pb-5">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 gall-mb-5">
+                                <a class="lightbox" href="images/gallery/last/11.jpg">
+                                    <img src="images/gallery/last/11.jpg" class="img-fluid" alt="Bridge">
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 gall-mb-5">
+                                <a class="lightbox" href="images/gallery/1.JPG">
+                                    <img src="images/gallery/1.JPG" class="img-fluid" alt="Bridge">
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 gall-mb-5">
+                                <a class="lightbox" href="images/gallery/2.JPG">
+                                    <img src="images/gallery/2.JPG" class="img-fluid" alt="Bridge">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row pb-5">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 gall-mb-5">
+                                <a class="lightbox" href="images/gallery/8.jpg">
+                                    <img src="images/gallery/8.jpg" class="img-fluid" alt="Bridge">
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 gall-mb-5">
+                                <a class="lightbox" href="images/gallery/vertical/1.jpg">
+                                    <img src="images/gallery/vertical/1.jpg" class="img-fluid" alt="Bridge">
+                                </a>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 gall-mb-5">
+                                <a class="lightbox" href="images/gallery/6.jpeg">
+                                    <img src="images/gallery/6.jpeg" class="img-fluid" alt="Bridge">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Schedule -->
+<section class="py-5" id="Schedule">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-5 col-5 offset-lg-1 offset-md-2 offset-sm-1 offset-1 scheadule-res-mb wow fadeIn" data-wow-duration=".7s" data-wow-delay="0.4s">
+                <h3 class="schedule-h3">Пн</h3>
+                <ul class="schedule-ul-2">
+                    <li>17:30 - 19:00</li>
+                    <li>19:00 - 20:30</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-5 col-5 offset-lg-1 offset-md-1 offset-sm-1 scheadule-res-mb wow fadeIn"          data-wow-duration=".7s" data-wow-delay="0.8s">
+                <h3 class="schedule-h3">Вт</h3>
+                <ul class="schedule-ul-3">
+                    <li>09:00 - 10:30</li>
+                    <li>17:30 - 19:00</li>
+                    <li>19:00 - 20:30</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-5 col-5 offset-lg-1 offset-md-2 offset-sm-1 offset-1 scheadule-res-mb wow fadeIn" data-wow-duration=".7s" data-wow-delay="1.2s">
+                <h3 class="schedule-h3">Ср</h3>
+                <ul class="schedule-ul-2">
+                    <li>17:30 - 19:00</li>
+                    <li>19:00 - 20:30</li>
+                </ul>
+            </div>
+            <div class="w-100 scheadule-row-mb schedule-separator"></div>
+            <div class="col-lg-3 col-md-4 col-sm-5 col-5 offset-lg-1 offset-md-1 offset-sm-1 scheadule-res-mb wow fadeIn"          data-wow-duration=".7s" data-wow-delay="1.6s">
+                <h3 class="schedule-h3">Чт</h3>
+                <ul class="schedule-ul-2">
+                    <li>09:00 - 10:30</li>
+                    <li>17:30 - 19:00</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-5 col-5 offset-lg-1 offset-md-2 offset-sm-1 offset-1 scheadule-res-mb wow fadeIn" data-wow-duration=".7s" data-wow-delay="2.0s">
+                <h3 class="schedule-h3">Пт</h3>
+                <ul class="schedule-ul-2">
+                    <li>17:30 - 19:00</li>
+                    <li>19:00 - 20:30</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-5 col-5 offset-lg-1 offset-md-1 offset-sm-1 scheadule-res-mb wow fadeIn"          data-wow-duration=".7s" data-wow-delay="2.4s">
+                <h3 class="schedule-h3">Сб</h3>
+                <ul class="schedule-ul-1">
+                    <li>10:00 - 11:30</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- News -->
+<section class="py-5" id="News">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-12 mb-3 text-center">
+                <div class="container-block wow fadeInLeft">
+                    <img src="images/news/news.jpg" class="img-fluid">
+                    <div class="inner-block">
+                        <div class="slider-top-right"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-12 wow zoomInRight">
+                <p>
+                    Слово «анахата» санскритского происхождения и его прямой перевод звучит как «неуничтожимый». На хинди это слово может звучать как «анахад» – беспредельный. Оба понятия тождественны и чаще всего употребляются как названия четвёртой чакры
+                    в общей системе центров, образованных взаимодействием причинных энергий, представляющих собой уровни бытия, в которые помещены тело и сознание каждого человеческого существа. Анахата имеет свою топографию в человеческом теле,
+                    располагаясь в пространстве средостения.
+                    <!-- Read more -->
+                    <span id="dots">...</span>
+                    <span id="more">
+            Традиционно для обозначения характеристик чакр используют геометрические фигуры в их различных сочетаниях, образующих янтры – сакральные диаграммы и символические образы, исходящие из глубокого опыта мистических переживаний
+            Главный элемент Анахата-чакры – это шестиугольник, образованный пересечением двух правильных треугольников (шаткона), в середине которого расположен гексагон, а по круговой периферии – шесть малых правильных треугольников. Шаткона – это
+              устоявшийся архетип, использовавшийся практически во всех традициях высокого мистицизма.
+              В основе символики пересечения двух треугольников лежит масштабная идея о вечном взаимодействии Сознания и Энергии, зародившаяся в духовной культуре индийской йоги и тантры.
+              Треугольник, направленный вершиной вверх – это Сознание, как источник Бытия, не имеющее границ, неподвластное времени, пребывающее в непреходящем блаженстве от своей самосознающей природы. Как персонификация, оно предстаёт Шивой
+              Адинатхом – изначальным Гуру йоги, ведущего адептов к познанию и раскрытию Сознания.
+              Треугольник, направленный вершиной вниз – символ непреходящей Энергии, Шакти, способной создавать и разрушать бесконечное количество форм, в своём первичном состоянии неотличимой от изначального Сознания. Её персонификация – это Парвати
+              – супруга Шивы Адинатха и первый ученик йоги.
+              Образ пересечения двух одинаковых треугольников несёт в себе идею равновеликости обоих начал и их вечного взаимодействия, создающего особый резонанс, причинный звук всеобщего бытия, порождённый союзом Сознания и Энергии вне каких-либо
+              ограничивающих форм. В своей артикулированной манифестации он выражен мистическим слогом Ом, спонтанно проявляющимся в сознании йогинов.
+              Два треугольника в своём взаимодействии образуют гексагон – символ первых манифестаций изначального Духа-сознания, переход из состояния до-бытия к бытию – вперёд, назад, вправо, влево, вверх, вниз. Это событие бесконечно отображается
+              природой во время зарождения живого существа через появление первых восьми, симметрично расположенных и неотличимых друг от друга, матричных клеток, в точности повторяющих геометрию гексагона.
+              В индивидуальном аспекте шестиугольник, образованный пересечением двух треугольников – символ безначального, вне пространства и времени – истинносущего самосознающего сознания.
+              Шесть малых треугольников, окружающих гексагон – образ шести чакр, как уровней бытия, формирующих микрокосм.
+              Вся композиция из многоугольников помещена в круг, обрамлённый двенадцатью лепестками, символизирующими бесконечность циклов времени и вечность непреходящего Бытия.
+            </span>
+                </p>
+                <a onclick="readMore()" id="myBtn">Більше</a>
+                <h3 class="h3-news-title">Йоги Адьянатх</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contacts -->
+<section class="py-5 bg-dark" id="Contacts">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 mb-5 mb-md-0 wow fadeIn" data-wow-duration=".7s" data-wow-delay="0.2s">
+                <div class="card py-4">
+                    <a href="" class="contacts-a" data-toggle="modal" data-target="#myModal">
+                        <div class="card-body text-center">
+                            <h5 class="text-uppercase contacts-h5">Phone</h5>
+                            <i class="fa fa-phone contacts-i"></i>
+                            <div class="contacts-text">+380 99 328 0450</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 mb-5 mb-md-0 wow fadeIn" data-wow-duration=".7s" data-wow-delay="0.4s">
+                <div class="card py-4">
+                    <a href="" class="contacts-a" data-toggle="modal" data-target="#myModal">
+                        <div class="card-body text-center">
+                            <h5 class="text-uppercase contacts-h5">Email</h5>
+                            <i class="fas fa-envelope contacts-i"></i>
+                            <div class="contacts-text">airin.niki@gmail.com</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 mb-5 mb-md-0 wow fadeIn" data-wow-duration=".7s" data-wow-delay="0.6s">
+                <div class="card py-4">
+                    <a href="" class="contacts-a" data-toggle="modal" data-target="#myModal">
+                        <div class="card-body text-center">
+                            <h5 class="text-uppercase contacts-h5">Address</h5>
+                            <i class="fas fa-map-marked-alt contacts-i"></i>
+                            <div class="contacts-text">Луцьк, вул. Винниченка, 67А</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="pt-5 social d-flex justify-content-center">
+            <a href="https://ru-ru.facebook.com/AnahataLutsk/" class="mx-2 social-icons wow fadeIn" data-wow-duration=".7s" data-wow-delay="0.8s">
+                <i class="fab fa-facebook-f social-i"></i>
+            </a>
+            <a href="https://www.instagram.com/anahata.yoga.lutsk/" class="mx-2 social-icons wow fadeIn" data-wow-duration=".7s" data-wow-delay="1.0s">
+                <i class="fab fa-instagram social-i"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Window -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Я тут</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe src="https://snazzymaps.com/embed/101332" width="100%" height="505px" style="border:none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+<!-- Header Nav -->
+<header class="header">
+    <nav class="top-nav">
+        <div class="nav-hamburger-menu-container">
+            <div id="hamburger_menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="admin_panel_title">
+                <span>Admin </span><span>Panel</span>
+            </div>
+        </div>
+        <div class="nav-profile-container">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="admin-profile" href="#" onclick="event.preventDefault()" aria-expanded="true">
+                        <img class="user-avatar" src="{{ adminGet('photo') ? adminGet('photo') : url("images/loader/anahata.svg") }}">
+                        <span class="admin-name">{{ adminGet('login') }}</span> <i class="fas fa-caret-down"></i>
+                    </a>
+                    <div class="dropdown-menu admin-profile-dropdown">
+                        <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Профіль</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url('logout') }}"><i style="transform:rotate(180deg)" class="fas fa-sign-in-alt"></i> Вихід</a>
+                    </div>
+                </li>
+            </ul>
+            <span class="separator"> | </span>
+            <a href="{{ url() }}" class="admin-to-site">
+                <i class="fas fa-home fa-2x"></i>
+            </a>
+        </div>
+    </nav>
+</header>
+<!-- End of header -->

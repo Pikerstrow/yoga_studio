@@ -1,0 +1,21 @@
+<aside>
+    <div id="sidebar-nav">
+        <ul class="sidebar-menu">
+            <li><a href="#"><span class="i-wrap"><i class="fas fa-tachometer-alt"></i></span>&nbsp;<span class="nav-a-text">
+                            Головна</span></a></li>
+
+            <li class="dropdown">
+                <a href="javascript:;" click="event.preventDefault();" class="drop-toggle"><span class="i-wrap"><i
+                            class="fas fa-file-alt"></i></span><span class="nav-a-text">&nbsp; Новини
+                        &nbsp;&nbsp;</span><i class="fas fa-angle-right"></i></a>
+                <ul class="sidebar_submenu">
+                    <li><a href="{{ url("admin/news") }}"><span class="i-wrap"><i class="fas fa-eye"></i></span><span class="nav-a-text">
+                                Переглянути </span></a></li>
+                    <li><a href="{{ url("admin/news/create") }}"><span class="i-wrap"><i class="fas fa-plus"></i></span><span class="nav-a-text">
+                                Додати </span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</aside>
+<!-- End of sidebar Nav -->

@@ -1,0 +1,67 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block title %} Анахата йога - студія. Перегляд новин. {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <h2 class="h2-admin-panel text-center">
+                Поточні новини
+            </h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            {{ showInfoBlock() }}
+            {% if news %}
+                <div class="table-responsive">
+                    <table class="table table-bordered admin-news-table">
+                        <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Фото</th>
+                            <th>Заголовок</th>
+                            <th>Текст</th>
+                            <th>Опубліковано</th>
+                            <th>Дії</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for post in news %}
+                                <tr>
+                                    <td class="admin-table-id-td">{{ post.id }}</td>
+                                    <td class="admin-table-photo-td"><img width="60" src="{{ post.photo ? post.photo : url('images/news/news.jpg') }}"></td>
+                                    <td class="admin-table-title-td">{{ post.title }}</td>
+                                    <td style="min-width: 350px;">{{ postBodyPreview(post.body) }}</td>
+                                    <td style="width: 100px">{{ post.created_at | date("d-m-Y") }}</td>
+                                    <td class="admin-table-actions-td">
+                                        <a href="#" class="admin-news-view" title="Переглянути"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ url("admin/news/edit", post.id) }}" class="admin-news-edit" title="Редагувати"><i class="fas fa-pencil-alt"></i></a>
+                                        <form id="admin-delete-news-form" method="post" action="{{ url('admin/news/delete') }}">
+                                            <input name="post_id" type="hidden" value="{{ post.id }}">
+                                            <button class="admin-news-delete" type="submit" title="Видалити"><i class="fas fa-times"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="col-12 no-news-info-block d-flex justify-content-center align-items-center">
+                    <div class="text-center">
+                        <i class="far fa-frown fa-8x"></i>
+                        <br>
+                        <h3>На даний момент опубліковані новини відсутні</h3>
+                    </div>
+
+                </div>
+            {% endif %}
+            <div class="admin-news-pagination-container">
+                {{ links | raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

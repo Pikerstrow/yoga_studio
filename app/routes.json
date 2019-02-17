@@ -1,0 +1,98 @@
+{
+  "": {
+    "controller": "HomeController",
+    "method": "index",
+    "identifier": null,
+    "auth": null
+  },
+  "404": {
+    "controller": "ErrorController",
+    "method": "notFound",
+    "identifier": null,
+    "auth": null
+  },
+  "login": {
+    "controller": "AuthController",
+    "method": "index",
+    "identifier": null,
+    "auth": null
+  },
+  "login/log-in": {
+  "controller": "AuthController",
+  "method": "login",
+  "identifier": null,
+  "auth": null
+},
+  "logout": {
+    "controller": "AuthController",
+    "method": "logout",
+    "identifier": null,
+    "auth": true
+  },
+  "news": {
+    "controller": "NewsController",
+    "method": "index",
+    "identifier": null,
+    "auth": null
+  },
+  "news/{slug}": {
+    "controller": "NewsController",
+    "method": "show",
+    "identifier": "slug",
+    "auth": null
+  },
+  "admin": {
+    "controller": "AdminController",
+    "method": "index",
+    "identifier": null,
+    "auth": true
+  },
+  "admin/news/create": {
+    "controller": "AdminNewsController",
+    "method": "create",
+    "identifier": null,
+    "auth": true
+  },
+  "admin/news/store": {
+    "controller": "AdminNewsController",
+    "method": "store",
+    "identifier": null,
+    "auth": true
+  },
+  "admin/news/delete": {
+    "controller": "AdminNewsController",
+    "method": "destroy",
+    "identifier": null,
+    "auth": true
+  },
+  "admin/news": {
+    "controller": "AdminNewsController",
+    "method": "index",
+    "identifier": null,
+    "auth": true
+  },
+  "admin/news/edit/{id}": {
+    "controller": "AdminNewsController",
+    "method": "edit",
+    "identifier": "id",
+    "auth": true
+  },
+  "admin/news/update/{id}": {
+    "controller": "AdminNewsController",
+    "method": "update",
+    "identifier": "id",
+    "auth": true
+  },
+  "admin/upload-image": {
+    "controller": "ImagesController",
+    "method": "upload",
+    "identifier": null,
+    "auth": true
+  },
+  "admin/upload-preview-image": {
+    "controller": "ImagesController",
+    "method": "uploadNewsMainPhoto",
+    "identifier": null,
+    "auth": true
+  }
+}

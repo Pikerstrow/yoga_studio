@@ -1,0 +1,93 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block title %} Анахата йога - студія. Додати новину. {% endblock %}
+
+{% block content %}
+
+    {% import "macroses/forms.twig" as forms %}
+    <div class="row">
+        <div class="col-12">
+            <h2 class="h2-admin-panel text-center">
+                Додати новину
+            </h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+            {{ showInfoBlock() }}
+            <form id="add-news-form" action="{{ url('admin/news/store') }}" method="post" enctype='multipart/form-data'>
+                <div class="add-news-form-group form-group">
+                    <label for="title" class="news-form-label">Заголовок новини</label>
+                    <input name="title" class="form-control {{ form_data.errors ? (form_data.errors.title ? 'is-invalid' : 'is-valid') : '' }}"
+                           value="{{ form_data.data.title ?? '' }}" placeholder="Введіть заголовок...">
+                    <div class="invalid-feedback">
+                        {{ form_data.errors.title ?? '' }}
+                    </div>
+                </div>
+                <span class="news-form-label">Фото новини</span>
+
+
+                <div class="d-flex align-content-center align-items-center flex-wrap">
+                    <div class="news-edit-photo-preview-container" style="margin-bottom:25px;">
+                        <span class="news-form-label" style="font-size: 11px; font-style: italic">Фото за замовчуванням</span>
+                        <div id="news-photo-preview">
+                            <img width="150" src="{{ url('images/news/news.jpg') }}">
+                        </div>
+                    </div>
+                    <div class="news-edit-new-photo">
+                        <div class="add-news-form-group custom-file">
+                            <input name="photo" id="news-photo-input" type="file" class="custom-file-input {{ form_data.errors ? (form_data.errors.photo ? 'is-invalid' : 'is-valid') : '' }}">
+                            <label class="custom-file-label" for="validatedCustomFile">Інше фото...</label>
+                            <div class="invalid-feedback">
+                                {{ form_data.errors.photo ?? ''  }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                {#<div id="upload-photo-input-container" class="d-flex align-content-center align-items-center flex-wrap">#}
+                    {#<div id="input-file-form-container">#}
+                        {#<div class="add-news-form-group custom-file">#}
+                            {#<input name="photo" id="news-photo-input" type="file" class="custom-file-input {{ form_data.errors ? (form_data.errors.photo ? 'is-invalid' : 'is-valid') : '' }}">#}
+                            {#<label class="custom-file-label" for="validatedCustomFile">Виберіть фото...</label>#}
+                            {#<div class="invalid-feedback">#}
+                                {#{{ form_data.errors.photo ?? ''  }}#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+
+
+
+
+
+
+
+
+
+                {#<div class="add-news-form-group custom-file">#}
+                    {#<input name="photo" id="news-photo-input" type="file" class="custom-file-input {{ form_data.errors ? (form_data.errors.photo ? 'is-invalid' : 'is-valid') : '' }}">#}
+                    {#<label class="custom-file-label" for="validatedCustomFile">Виберіть фото...</label>#}
+                    {#<div class="invalid-feedback">#}
+                        {#{{ form_data.errors.photo ?? ''  }}#}
+                    {#</div>#}
+                {#</div>#}
+                <div class="add-news-form-group form-group">
+                    <label for="body" class="news-form-label">Текст новини</label>
+                    <textarea name="body" class="form-control {{ form_data.errors ? (form_data.errors.body ? 'is-invalid-textarea' : 'is-valid-textarea') : '' }}"
+                              id="js-editor">{{ form_data.data.body ?? '' }}</textarea>
+                    <div class="is-invalid-textarea-helper">
+                        {{ form_data.errors.body ?? ''  }}
+                    </div>
+                </div>
+                <div class="add-news-form-group form-group">
+                    <button type="submit" class="btn btn-primary col-12">Опублікувати</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

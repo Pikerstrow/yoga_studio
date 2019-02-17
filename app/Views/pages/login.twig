@@ -1,0 +1,38 @@
+{% extends 'layouts/password.twig' %}
+
+{% block title %} Авторизація {% endblock %}
+
+{% block content %}
+        <div id="password-form-container">
+            {{ showInfoBlock() }}
+            <form action="{{ url('login/log-in') }}" method="post">
+                <div class="row d-flex flex-row justify-content-center">
+                    <div class="password-logo-container" >
+                        <img width="100" src="images/loader/anahata.svg">
+                    </div>
+                </div>
+                <div class="form-group password-form-group">
+                    <input name="login" type="text" class="form-control password-input {{ form_data.login_error ? 'is-invalid' : '' }}" aria-describedby="emailHelp"
+                           placeholder="Логін" value="{{ form_data.login ?? '' }}">
+                    <div class="invalid-feedback">
+                        {{ form_data.login_error }}
+                    </div>
+                </div>
+                <div class="form-group password-form-group">
+                    <input name="password" type="password" class="form-control password-input {{ form_data.password_error ? 'is-invalid' : '' }}"
+                           placeholder="Пароль">
+                    <div class="invalid-feedback">
+                        {{ form_data.password_error  }}
+                    </div>
+                </div>
+                <div class="row d-flex flex-row justify-content-between align-items-end">
+                    <div class="col">
+                        <button class="password-button" type="submit" class="btn btn-primary">Вхід</button>
+                    </div>
+                    <div class="col text-right">
+                        <a class="password-forgot" href="#">Забули пароль?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block title %} Анахата йога - студія. Панель адміністратора. {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 admin-welcome">
+            <h2 class="admin-welcome-h2">
+                Вітаємо в панелі адміністратора, <span> {{ adminGet('login') }}!</span>
+            </h2>
+            <hr>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% include 'parts/admin/head.twig' %}
+
+<body>
+<!-- Header nav -->
+{% include 'parts/admin/header.navigation.twig' %}
+
+<!-- Sidebar Nav -->
+{% include 'parts/admin/sidebar.navigation.twig' %}
+
+<!-- Main Content -->
+<section id="main-content">
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</section>
+<!-- End of Main Content section -->
+
+<!-- Footer -->
+{% include 'parts/admin/footer.twig' %}
+</body>
+
+</html>

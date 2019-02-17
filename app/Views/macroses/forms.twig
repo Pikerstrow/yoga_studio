@@ -1,0 +1,7 @@
+{% macro input(name, value, class, type, placeholder) %}
+    <input type="{{ type|default('text') }}" value="{{ value|e }}" class="{{ class }}" name="{{ name }}" placeholder="{{ placeholder|e }}"/>
+{% endmacro %}
+
+{% macro textarea(name, value, class, rows, cols) %}
+    <textarea id="editor" name="{{ name }}" value="{{ value|e }}" class="{{ class }}" rows="{{ rows }}" cols="{{ cols }}"></textarea>
+{% endmacro %}
