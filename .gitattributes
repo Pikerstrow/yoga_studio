@@ -1,4 +1,8 @@
 * linguist-vendored
 *.php linguist-vendored=false
-*.js linguist-vendored=false
+public/js/admin.js linguist-vendored=false
+public/js/app.js linguist-vendored=false
+public/js/index.js linguist-vendored=false
+public/js/upload-adapter.js linguist-vendored=false
 public/css/admin.css linguist-vendored=false
+public/css/style.css linguist-vendored=false
