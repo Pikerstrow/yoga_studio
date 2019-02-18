@@ -1,7 +1,7 @@
 # yoga_studio
 Web site for small private yoga studio. Project has admin panel with one CRUD for news only...
 
-Used technologies:
+Used in project:
 
 Patterns:
 - MVC;
