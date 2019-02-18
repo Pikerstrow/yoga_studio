@@ -1,2 +1,2 @@
-special-vendored-path/* linguist-vendored
-public/css/* linguist-vendored=false
+* linguist-vendored
+*.css linguist-vendored=false
