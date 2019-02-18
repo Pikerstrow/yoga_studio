@@ -1,2 +1,6 @@
 special-vendored-path/* linguist-vendored
 public/css/*.css linguist-vendored=false
+public/css/all.css linguist-vendored=false
+public/css/bootstrap.css linguist-vendored=false
+public/css/animate.css linguist-vendored=false
+public/css/hamburger.css linguist-vendored=false
