@@ -19,7 +19,7 @@
                         <span class="admin-name">{{ adminGet('login') }}</span> <i class="fas fa-caret-down"></i>
                     </a>
                     <div class="dropdown-menu admin-profile-dropdown">
-                        <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Профіль</a>
+                        <a class="dropdown-item" href="{{ url('admin/profile') }}"><i class="fas fa-user"></i> Профіль</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('logout') }}"><i style="transform:rotate(180deg)" class="fas fa-sign-in-alt"></i> Вихід</a>
                     </div>

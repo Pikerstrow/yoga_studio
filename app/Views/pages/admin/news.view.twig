@@ -39,7 +39,7 @@
                                     <td class="admin-table-actions-td">
                                         <a href="#" class="admin-news-view" title="Переглянути"><i class="fas fa-eye"></i></a>
                                         <a href="{{ url("admin/news/edit", post.id) }}" class="admin-news-edit" title="Редагувати"><i class="fas fa-pencil-alt"></i></a>
-                                        <form id="admin-delete-news-form" method="post" action="{{ url('admin/news/delete') }}">
+                                        <form class="admin-delete-news-form" method="post" action="{{ url('admin/news/delete') }}">
                                             <input name="post_id" type="hidden" value="{{ post.id }}">
                                             <button class="admin-news-delete" type="submit" title="Видалити"><i class="fas fa-times"></i></button>
                                         </form>

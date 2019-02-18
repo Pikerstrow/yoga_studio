@@ -1,0 +1,62 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block title %} Анахата йога - студія. Панель адміністратора. {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 admin-welcome">
+            <h2 class="admin-welcome-h2">
+                <span>Редагування профілю</span>
+            </h2>
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-9 col-xl-6">
+                    {{ showInfoBlock() }}
+                    <form action="{{ url('admin/profile/update', admin.id) }}" method="post" role="form" id="edit_profile" enctype="multipart/form-data">
+                        <div class="add-news-form-group form-group">
+                            <label for="login" class="news-form-label">Логін</label>
+                            <input type="text" name="login" class="form-control {{ form_data.errors ? (form_data.errors.login ? 'is-invalid' : 'is-valid') : '' }}"
+                                   value="{{ form_data.data.login ?? admin.login }}">
+                            <div class="invalid-feedback">
+                                {{ form_data.errors.login ?? '' }}
+                            </div>
+                        </div>
+
+                        <div class="current_photo_container">
+                            <label class="news-form-label">Поточний аватар </label>
+                            <div id="admin-avatar-preview">
+                                <img width="150" src="{{ admin.photo ? admin.photo : url("images/loader/anahata.svg") }}" style="margin-bottom: 15px;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="user-avatar-input-container">
+                                <span class="news-form-label">Вибрати інше фото</span>
+                                <div class="add-news-form-group custom-file">
+                                    <input name="photo" type="file" class="custom-file-input {{ form_data.errors ? (form_data.errors.photo ? 'is-invalid' : 'is-valid') : '' }}">
+                                    <label class="custom-file-label" for="validatedCustomFile">Виберіть фото...</label>
+                                    <div class="invalid-feedback">
+                                        {{ form_data.errors.photo ?? ''  }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="add-news-form-group form-group">
+                            <label for="email" class="news-form-label">Email</label>
+                            <input type="email" name="email" class="form-control {{ form_data.errors ? (form_data.errors.email ? 'is-invalid' : 'is-valid') : '' }}"
+                                   value="{{ form_data.data.email ?? admin.email }}">
+                            <div class="invalid-feedback">
+                                {{ form_data.errors.email ?? '' }}
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <button type="submit" class="form-control admin-sumb-button" name="edit_profile_confirmed">Змінити дані</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

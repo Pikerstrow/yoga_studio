@@ -27,7 +27,6 @@
                 </div>
                 <span class="news-form-label">Фото новини</span>
 
-
                 <div class="d-flex align-content-center align-items-center flex-wrap">
                     <div class="news-edit-photo-preview-container" style="margin-bottom:25px;">
                         <span class="news-form-label" style="font-size: 11px; font-style: italic">Фото за замовчуванням</span>
@@ -46,36 +45,6 @@
                     </div>
                 </div>
 
-
-
-
-                {#<div id="upload-photo-input-container" class="d-flex align-content-center align-items-center flex-wrap">#}
-                    {#<div id="input-file-form-container">#}
-                        {#<div class="add-news-form-group custom-file">#}
-                            {#<input name="photo" id="news-photo-input" type="file" class="custom-file-input {{ form_data.errors ? (form_data.errors.photo ? 'is-invalid' : 'is-valid') : '' }}">#}
-                            {#<label class="custom-file-label" for="validatedCustomFile">Виберіть фото...</label>#}
-                            {#<div class="invalid-feedback">#}
-                                {#{{ form_data.errors.photo ?? ''  }}#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
-
-
-
-
-
-
-
-
-
-                {#<div class="add-news-form-group custom-file">#}
-                    {#<input name="photo" id="news-photo-input" type="file" class="custom-file-input {{ form_data.errors ? (form_data.errors.photo ? 'is-invalid' : 'is-valid') : '' }}">#}
-                    {#<label class="custom-file-label" for="validatedCustomFile">Виберіть фото...</label>#}
-                    {#<div class="invalid-feedback">#}
-                        {#{{ form_data.errors.photo ?? ''  }}#}
-                    {#</div>#}
-                {#</div>#}
                 <div class="add-news-form-group form-group">
                     <label for="body" class="news-form-label">Текст новини</label>
                     <textarea name="body" class="form-control {{ form_data.errors ? (form_data.errors.body ? 'is-invalid-textarea' : 'is-valid-textarea') : '' }}"

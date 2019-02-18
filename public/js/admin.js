@@ -54,15 +54,15 @@ $(document).ready(function(){
 
 /*UPLOAD AND SHOW NEWS MAIN IMAGE*/
 $('#add-news-form input[type="file"]').on('change', () => {
+    let photoInput = $('.news-edit-new-photo').find('input[type="file"]');
+    let errorDiv = $('.news-edit-new-photo').find('.invalid-feedback');
+
     let formData = new FormData($('#add-news-form')[0]);
 
     $.ajax({
         url: 'http://anahata.test/admin/upload-preview-image',
         type: 'POST',
         data: formData,
-        beforeSend(){
-            // $(this).attr('disabled', 'disabled');
-        },
         success(data) {
             let response = JSON.parse(data);
 
@@ -71,24 +71,92 @@ $('#add-news-form input[type="file"]').on('change', () => {
 
                 let preview = "<img width='150' src='" + url + "'>";
 
-                $('#news-photo-preview').html();
+                $('#news-photo-preview').html('');
                 $('#news-photo-preview').html(preview);
 
+                if($(photoInput).hasClass('is-invalid')){
+                    $(photoInput).removeClass('is-invalid');
+                    $(errorDiv).html('');
+                }
             }
+
+            if(response.hasOwnProperty('error')){
+                let error  = response.error;
+
+                $('#news-photo-preview').html('');
+
+                $(photoInput).addClass('is-invalid');
+                $(errorDiv).text(error);
+            }
+
 
         },
         error(){
             // console.log(error);
-            //
-            // let error = xhr.responseJSON.errors ? xhr.responseJSON.errors.photo["0"] : 'Помилка завантаження файлу';
-            //
-            // console.log(error);
-            //
-            // $('#photo-preview').html()
-            // $('#photo-preview').html(error);
         },
         cache: false,
         contentType: false,
         processData: false
+    });
+});
+
+
+/*UPLOAD AND SHOW ADMIN AVATAR*/
+$('#edit_profile input[type="file"]').on('change', () => {
+    let avatarInput = $('.user-avatar-input-container').find('input[type="file"]');
+    let errorDiv = $('.user-avatar-input-container').find('.invalid-feedback');
+
+    let formData = new FormData($('#edit_profile')[0]);
+
+    $.ajax({
+        url: 'http://anahata.test/admin/profile/upload-avatar',
+        type: 'POST',
+        data: formData,
+        success(data) {
+            let response = JSON.parse(data);
+
+            if(response.hasOwnProperty('url')){
+                let url  = response.url;
+
+                let preview = "<img width='150' src='" + url + "'>";
+
+                $('#admin-avatar-preview').html('');
+                $('#admin-avatar-preview').html(preview);
+
+                if($(avatarInput).hasClass('is-invalid')){
+                    $(avatarInput).removeClass('is-invalid');
+                    $(errorDiv).html('');
+                }
+            }
+
+            if(response.hasOwnProperty('error')){
+                let error  = response.error;
+
+                $('#admin-avatar-preview').html('');
+
+                $(avatarInput).addClass('is-invalid');
+                $(errorDiv).text(error);
+            }
+
+        },
+        error(error){
+            // console.log(error);
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+});
+
+
+/*SHOW MODAL ON DELETE PRODUCT*/
+$('.admin-news-delete').click(function(e){
+    e.preventDefault();
+    let deleteButton = $(this);
+
+    $('#myModal').modal('show');
+
+    $('.modal_delete_link').on('click', function() {
+        $(deleteButton).closest('.admin-delete-news-form').submit();
     });
 });

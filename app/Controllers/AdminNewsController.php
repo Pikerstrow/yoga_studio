@@ -78,33 +78,49 @@ class AdminNewsController
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            "photo" => "required|maxsize:5120|image|proportions:1100*1100",
-            "title" => "required|max:120|min:3",
-            "body" => "required|max:15000|min:10"
-        ]);
 
-        if(isset($data['errors'])){
+        /*Різні правила валідації для випадків, коли головне фото новини передано та коли - ні*/
+        if ($request->hasFile('photo')) {
+            $data = $request->validate([
+                "photo" => "required|maxsize:5120|image|proportions:1100*1100",
+                "title" => "required|max:120|min:3",
+                "body" => "required|max:15000|min:10"
+            ]);
+        } else {
+            $data = $request->validate([
+                "title" => "required|max:120|min:3",
+                "body" => "required|max:15000|min:10"
+            ]);
+        }
+
+        if (isset($data['errors'])) {
             _session()->flash('error', 'Форма містить помилки!');
             _session()->flash('form_data', $data);
             return _redirect()->to(APP_URL . "/admin/news/create");
         }
 
-        /*зберігаємо файл головного фото*/
-        $photo = new Image($data['data']['photo']);
-
-        if(!$photo->save()){
-            _session()->flash('error', 'Помилка збереження файлу! Спробуйте будь ласка ще раз...');
-            return _redirect()->to(APP_URL . "/admin/news/create");
-        }
-
         $dataForStoring = $data['data'];
 
-        /*перезаписуємо значення "photo" із масиву на url файлу*/
-        $dataForStoring['photo'] = $photo->getSrc();
+        /*Перевіряємо чи передане головне фото новини*/
+        if ($request->hasFile('photo')) {
+            /*зберігаємо головне фото новини*/
+            $photo = new Image($data['data']['photo']);
+
+            if (!$photo->save()) {
+                _session()->flash('error', 'Помилка збереження нового фото! Спробуйте будь ласка ще раз...');
+                return _redirect()->to(APP_URL . "/admin/news/create");
+            }
+            /*замість масиву із інформацією про файл зберігаємо в БД src зображення*/
+            $dataForStoring['photo'] = $photo->getSrc();
+
+        } else {
+            $dataForStoring['photo'] = APP_URL . "/images/news/news.jpg";
+        }
+
 
         /*операції над зображенням в тілі новини. Див. метод*/
         $this->arrangeBodyImages($dataForStoring['body'], "temporary");
+
         /*Видаляємо всі зайві файли із тимчасової папки*/
         cleanDirectory("images/news/temporary");
 
@@ -116,7 +132,7 @@ class AdminNewsController
             News::create($dataForStoring);
             _session()->flash('success', 'Новина опублікована!');
             return _redirect()->to(APP_URL . "/admin/news/create");
-        } catch (DatabaseException $e){
+        } catch (DatabaseException $e) {
             _log()->add($e->getError());
             _session()->flash('error', 'Помилка збереження даних! Спробуйте ще раз...');
             return _redirect()->to(APP_URL . "/admin/news/create");
@@ -190,7 +206,7 @@ class AdminNewsController
 
         /*Перевіряємо чи передане нове головне фото новини, якщо воно передане і якщо новина має не дефолтне фото - видаляємо його*/
         if($request->hasFile('photo')){
-            if($post->photo){
+            if($post->photo != APP_URL . "/images/news/news.jpg"){
                 /*видаляємо попереднє фото новини, якщо воно було не дефолтне*/
                 if($post->deletePhoto()){
                     /*зберігаємо нове фото новини, у випадку успішного видалення попереднього фото*/
@@ -206,7 +222,18 @@ class AdminNewsController
                     _session()->flash('error', 'Помилка видалення попереднього головного фото новини! Спробуйте будь ласка ще раз...');
                     return _redirect()->to(APP_URL . "/admin/news/edit/" . $id);
                 }
+            } else {
+                /*зберігаємо нове фото новини, у випадку успішного видалення попереднього фото*/
+                $photo = new Image($data['data']['photo']);
+
+                if(!$photo->save()){
+                    _session()->flash('error', 'Помилка збереження нового фото! Спробуйте будь ласка ще раз...');
+                    return _redirect()->to(APP_URL . "/admin/news/edit/" . $id);
+                }
+                /*замість масиву із інформацією про файл зберігаємо в БД src зображення*/
+                $dataForStoring['photo'] = $photo->getSrc();
             }
+
         }
 
         /*робимо slug із title для можливості створення ЧПУ*/

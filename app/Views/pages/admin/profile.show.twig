@@ -1,0 +1,52 @@
+{% extends 'layouts/admin.twig' %}
+
+{% block title %} Анахата йога - студія. Панель адміністратора. {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 admin-welcome">
+            <h2 class="admin-welcome-h2">
+                <span>Особисті дані</span>
+            </h2>
+            <hr>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-9 col-xl-6">
+                    {{ showInfoBlock() }}
+                    <div class="box-info text-center user-profile-2">
+                        <div class="header-cover">
+                        </div>
+                        <div class="user-profile-inner">
+                            <h4 class="white">{{ admin.login }}</h4>
+                            <img src="{{ admin.photo ? admin.photo : url("images/loader/anahata.svg") }}" class="rounded-circle profile-avatar" alt="User avatar">
+                            <hr>
+                            <table>
+                                <tr>
+                                    <td class="profile-table"><b>Логін:</b></td>
+                                    <td class="profile-table-td-two">{{ admin.login }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="profile-table"><b>Email:</b></td>
+                                    <td class="profile-table-td-two">{{ admin.email }}</td>
+                                </tr>
+                            </table>
+                            <!-- User button -->
+                            <div class="user-button">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-2">
+                                        <a href="{{ url('admin/profile/profile_edit') }}"
+                                           class="btn btn-sm btn-block btn-profile-edit"> Редагувати профіль</a>
+                                    </div>
+                                    <div class="col-12 col-sm-6">
+                                        <a href="{{ url('admin/profile/password_edit') }}"
+                                           class="btn btn-sm btn-block btn-profile-edit"> Змінити пароль</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

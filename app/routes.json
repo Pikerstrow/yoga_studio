@@ -94,5 +94,29 @@
     "method": "uploadNewsMainPhoto",
     "identifier": null,
     "auth": true
+  },
+  "admin/profile": {
+    "controller": "AdminController",
+    "method": "showProfile",
+    "identifier": null,
+    "auth": true
+  },
+  "admin/profile/profile_edit": {
+    "controller": "AdminController",
+    "method": "editProfile",
+    "identifier": null,
+    "auth": true
+  },
+  "admin/profile/upload-avatar": {
+    "controller": "ImagesController",
+    "method": "uploadAdminAvatar",
+    "identifier": null,
+    "auth": true
+  },
+  "admin/profile/update/{id}": {
+    "controller": "AdminController",
+    "method": "updateProfile",
+    "identifier": "id",
+    "auth": true
   }
 }
