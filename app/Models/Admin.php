@@ -32,4 +32,8 @@ class Admin extends AbstractModel
         return false;
     }
 
+    public function hashPassword($value){
+        return password_hash($value, PASSWORD_BCRYPT, array('cost' => 12));
+    }
+
 }

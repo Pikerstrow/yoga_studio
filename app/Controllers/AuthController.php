@@ -70,4 +70,15 @@ class AuthController
         }
     }
 
+
+    public function forgot()
+    {
+        if(_session()->has('auth') and _session()->get('ua') == $_SERVER['HTTP_USER_AGENT'] and _session()->get('ip') == $_SERVER['REMOTE_ADDR']){
+            _redirect()->to(APP_URL . '/admin');
+        } else {
+            $data = _session()->getFlash('form_data');
+            return _view('pages/forgot.twig', ['form_data' => $data]);
+        }
+    }
+
 }

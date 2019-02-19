@@ -1,0 +1,28 @@
+{% extends 'layouts/password.twig' %}
+
+{% block title %} Відновлення паролю {% endblock %}
+
+{% block content %}
+    <div id="password-form-container">
+        {{ showInfoBlock() }}
+        <form action="{{ url('password/forgot') }}" method="post">
+            <div class="row d-flex flex-row justify-content-center">
+                <div class="password-logo-container">
+                    <img width="100" src="images/loader/anahata.svg">
+                </div>
+            </div>
+            <div class="form-group password-form-group">
+                <input name="email" type="email"
+                       class="form-control password-input {{ form_data.email_error ? 'is-invalid' : '' }}"
+                       aria-describedby="emailHelp"
+                       placeholder="Введіть ваш email..." value="{{ form_data.email ?? '' }}">
+                <div class="invalid-feedback">
+                    {{ form_data.email_error }}
+                </div>
+            </div>
+            <div class="form-group password-form-group">
+                <button class="password-button col-12" type="submit" class="btn btn-primary">Далі</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

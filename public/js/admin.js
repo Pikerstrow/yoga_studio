@@ -88,8 +88,6 @@ $('#add-news-form input[type="file"]').on('change', () => {
                 $(photoInput).addClass('is-invalid');
                 $(errorDiv).text(error);
             }
-
-
         },
         error(){
             // console.log(error);
@@ -159,4 +157,68 @@ $('.admin-news-delete').click(function(e){
     $('.modal_delete_link').on('click', function() {
         $(deleteButton).closest('.admin-delete-news-form').submit();
     });
+});
+
+
+/*CHECK CURRENT ADMIN PASSWORD FOR PASSWORD CHANGE PAGE IN ADMIN PANEL*/
+$('#pass_change_from_container input[name="old_password"]').on("keyup", function(){
+
+    $.post("http://anahata.test/admin/profile/get_current_password",
+        {
+            password_change: "initiated",
+            pass : $('#pass_change_from_container input[name="old_password"]').val()
+        },
+        function(data, status){
+
+            let oldPassInput = $('#current-pass-input-group input[name="old_password"]');
+            let newPassInput = $('#pass_change_from_container').find('input[name="password"]');
+            let passConfInput = $('#pass_change_from_container').find('input[name="password_confirm"]');
+            let validFeedbackDiv = $('#current-pass-input-group').find("div.valid-feedback");
+            let invalidFeedbackDiv = $('#current-pass-input-group').find('div.invalid-feedback');
+
+
+            if(status == 'success' && data == 'Пароль введено вірно'){
+                if($(oldPassInput).hasClass('is-invalid')){
+                    $(oldPassInput).removeClass('is-invalid');
+                }
+                $(oldPassInput).addClass('is-valid');
+                $(invalidFeedbackDiv).html('');
+                $(validFeedbackDiv).html('Діючий пароль вірний. Можете задавати новий пароль.');
+                $(newPassInput).removeAttr('disabled');
+                $(passConfInput).removeAttr('disabled');
+            } else {
+                if($(oldPassInput).hasClass('is-valid')){
+                    $(oldPassInput).removeClass('is-valid');
+                }
+                $(oldPassInput).addClass('is-invalid');
+                $(validFeedbackDiv).html('');
+                $(invalidFeedbackDiv).html(data);
+                $(newPassInput).attr('disabled', 'disabled');
+                $(passConfInput).attr('disabled', 'disabled');
+            }
+        });
+});
+
+
+/*CHECK IF NEW PASSWORD MATCHES PASSWORD CONFIRM FOR PASSWORD CHANGE PAGE IN ADMIN PANEL*/
+$('#pass_change_from_container input[name="password_confirm"]').on('keyup', function(){
+    let newPassword = $('#pass_change_from_container input[name="password"]').val();
+    let passConfInput = $('#pass_change_from_container').find('input[name="password_confirm"]');
+
+    if($(this).val() !== newPassword){
+        if($(passConfInput).hasClass('is-valid')){
+            $(passConfInput).removeClass('is-valid');
+        }
+        $(passConfInput).addClass('is-invalid');
+
+        $(passConfInput).closest('.form-group').find('div.invalid-feedback').html('Паролі не співпадають');
+
+        $('#pass_change_from_container .admin-sumb-button').attr('disabled', 'disabled');
+    } else {
+        $(passConfInput).closest('.form-group').find('.invalid-feedback').html('');
+        if($(passConfInput).hasClass('is-invalid')){
+            $(passConfInput).removeClass('is-invalid');
+        }
+        $('#pass_change_from_container .admin-sumb-button').removeAttr('disabled');
+    }
 });

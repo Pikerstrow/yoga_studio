@@ -12,7 +12,7 @@ namespace Core\Validators;
 class Password extends Field
 {
     protected $name = "Пароль";
-    protected $saltSymbols = '!@#$%^&*()_=+-"/\\~';
+    protected $saltSymbols = '!@#$%^&*`()_=+-:;"/\\~';
 
     public function validate()
     {

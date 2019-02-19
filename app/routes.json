@@ -17,6 +17,13 @@
     "identifier": null,
     "auth": null
   },
+
+  "forgot": {
+    "controller": "AuthController",
+    "method": "forgot",
+    "identifier": null,
+    "auth": null
+  },
   "login/log-in": {
   "controller": "AuthController",
   "method": "login",
@@ -107,6 +114,12 @@
     "identifier": null,
     "auth": true
   },
+  "admin/profile/password_edit": {
+    "controller": "AdminController",
+    "method": "editPassword",
+    "identifier": null,
+    "auth": true
+  },
   "admin/profile/upload-avatar": {
     "controller": "ImagesController",
     "method": "uploadAdminAvatar",
@@ -117,6 +130,18 @@
     "controller": "AdminController",
     "method": "updateProfile",
     "identifier": "id",
+    "auth": true
+  },
+  "admin/profile/update_password/{id}": {
+    "controller": "AdminController",
+    "method": "updatePassword",
+    "identifier": "id",
+    "auth": true
+  },
+  "admin/profile/get_current_password": {
+    "controller": "AdminController",
+    "method": "checkCurrentPassword",
+    "identifier": null,
     "auth": true
   }
 }
