@@ -32,6 +32,12 @@ class Password extends Field
                         return $this->validated;
                     }
                     break;
+                case "latin":
+                    if(preg_match('#[а-яА-Я]|ёіІ#ui', $this->value)){
+                        $this->validated['error'] = str_replace(":name", $this->name, $this->messages['latin']);
+                        return $this->validated;
+                    }
+                    break;
             }
         }
 

@@ -122,18 +122,18 @@ class TwigFunctions extends AbstractExtension
         return null;
     }
 
-    public function postBodyPreview($post)
+    public function postBodyPreview($post, $symbols = 150)
     {
         preg_match("#\<p\>(.*)\<\/p\>#U", $post, $matches);
 
         if(!empty($matches)){
             $firstParagraph = $matches[1];
             $preview = preg_replace("#<img(.*?)\>#", " ", $firstParagraph);
-            if(mb_strlen($preview) > 150){
-                return str_replace(mb_substr($preview, 150), " ... ", $preview);
+            if(mb_strlen($preview) > $symbols){
+                return str_replace(mb_substr($preview, $symbols), " ... ", $preview);
             }
             return $preview;
         }
-        return mb_strlen($post) > 150 ? str_replace(mb_substr($post, 150), " ... ", $post) : $post;
+        return mb_strlen($post) > $symbols ? str_replace(mb_substr($post, $symbols), " ... ", $post) : $post;
     }
 }

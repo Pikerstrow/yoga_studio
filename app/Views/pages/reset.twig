@@ -1,0 +1,43 @@
+{% extends 'layouts/password.twig' %}
+
+{% block title %} Авторизація {% endblock %}
+
+{% block content %}
+    <div id="password-form-container">
+        {{ showInfoBlock() }}
+
+        <form action="{{ url('forgot/update') }}" method="post">
+            <div class="row d-flex flex-row justify-content-center">
+                <div class="password-logo-container">
+                    <img width="100" src="{{ url("images/loader/anahata.svg") }}">
+                </div>
+            </div>
+            <div class="form-group password-form-group">
+                <input name="password" type="password"
+                       class="form-control password-input {{ form_data.errors.password ? 'is-invalid' : '' }}"
+                       placeholder="Новий пароль" value="">
+                <div class="invalid-feedback">
+                    {{ form_data.errors.password }}
+                </div>
+            </div>
+            <div class="form-group password-form-group">
+                <input name="password_confirm" type="password"
+                       class="form-control password-input {{ form_data.errors.password_confirm ? 'is-invalid' : '' }}"
+                       placeholder="Підтвердіть новий пароль">
+                <div class="invalid-feedback">
+                    {{ form_data.errors.password_confirm }}
+                </div>
+            </div>
+            <div class="form-group password-form-group">
+                <input name="token" type="hidden" value="{{ form_data.data.token ?? token }}">
+            </div>
+            <p class="small text-justify" style="color:white">
+                <b>Важливо!</b> Пароль повинен складатися із літер латинського алфавіту та має містити мінімум
+                одну цифру та один спецсимвол (наприклад * тощо). Мінімальна довжина паролю - 8 символів. Масимальна - 15.
+            </p>
+            <div class="form-group password-form-group">
+                <button class="password-button" type="submit" class="btn btn-primary col-12">Відправити</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

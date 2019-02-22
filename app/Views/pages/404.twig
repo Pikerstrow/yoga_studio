@@ -1,7 +1,53 @@
-{% extends 'layouts/base.twig' %}
+<head>
+    <!-- Title -->
+    <title>404 - Сторінку не знайдено</title>
 
-{% block title %} Анахата йога - студія. Про нас {% endblock %}
+    <!-- Responsive -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-{%  block content %}
-    <h1>404</h1>
-{% endblock %}
+    <!-- Seo -->
+    <meta name="description" content="Анахата йога - студія м. Луцьк. Практика хатха йоги в сучасному розумінні з певних причин набула хибного вираження. Ми не претендуємо на істинність методу, та для нас є важливим нагадати, змістити орієнтир до першоджерел. На наших заняттях ми пропонуємо Вам Вас же самих. Ми пропонуємо шлях самозаглиблення, самопізнання, самовиявлення через такі інструменти йоги, як асана, пранаяма, концентрація, медитація. Шлях не простий, проте сповнений життя.">
+    <meta name="keywords" content="Йога Луцьк, Йога, Йога з дітьми Луцьк, Йога для вагітних Луцьк, вартість заняття йогою Луцьк, користь йоги, Медитація, Практика йоги Луцьк, Натхи Луцьк, Школа натхів в Луцьку,для чого займатися йогою, Тренер з йоги Анахата Луцьк, Тренер з йоги Іра Луцьк, графік занять йога студія Луцьк">
+
+    <!-- Url Info -->
+    <meta property="og:url"          content="http://anahata.in.ua" />
+    <meta property="og:type"         content="article" />
+    <meta property="og:title"        content="Анахата йога - студія м. Луцьк" />
+    <meta property="og:description"  content="Анахата йога - студія м. Луцьк. Практика хатха йоги в сучасному розумінні з певних причин набула хибного вираження. Ми не претендуємо на істинність методу, та для нас є важливим нагадати, змістити орієнтир до першоджерел. На наших заняттях ми пропонуємо Вам Вас же самих. Ми пропонуємо шлях самозаглиблення, самопізнання, самовиявлення через такі інструменти йоги, як асана, пранаяма, концентрація, медитація. Шлях не простий, проте сповнений життя." />
+    <meta property="og:image"        content="http://anahata.in.ua/img/gallery/last/2.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url("images/icon/favicon.png") }}" type="image/x-icon">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url("css/bootstrap.css") }}">
+    <link rel="stylesheet" href="{{ url("css/hamburgers.css") }}">
+    <link rel="stylesheet" href="{{ url("css/animate.css") }}">
+    <link rel="stylesheet" href="{{ url("css/style.css") }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="not-found-container">
+    <div class="container" >
+        <div style="height:100%" class="row d-flex justify-content-center align-items-center">
+            <div class="col-10 col-md-6 col-xl-4 text-center">
+                <h1>404</h1>
+                <p>Сторінку не знайедно</p>
+                <hr>
+                <a class="not-found-main" href="{{ url() }}">На головну</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>

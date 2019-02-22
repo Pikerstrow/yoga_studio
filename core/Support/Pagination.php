@@ -98,10 +98,42 @@ class Pagination
         return isset($htmlLinks) ? $htmlLinks : '';
     }
 
+    public function createSimplePaginationLinks($uri)
+    {
+        if($this->totalPages <= 1){
+            $htmlLinks = '';
+        } else {
+            $htmlLinks = "<nav aria-label=\"Page navigation example\"><ul class=\"pagination justify-content-center\">";
+
+            if ($this->currentPage == 1) {
+                $htmlLinks .= "<li style=\"margin-right: 30px;\"><a onclick='event.preventDefault()' class='page-link news-pagination disabled' href=''> Previous </a></li>";
+            } else {
+                $page = $this->currentPage - 1;
+                $htmlLinks .= "<li style=\"margin-right: 30px;\"><a class='page-link news-pagination' href='" . APP_URL . "/" . $uri . "/?page={$page}'> Previous </a></li>";
+            }
+
+            if ($this->currentPage == $this->totalPages) {
+                $htmlLinks .= "<li style=\"margin-right: 30px;\"><a onclick='event.preventDefault()' class='page-link news-pagination disabled' href=''> Next </a></li>";
+            } else {
+                $page = $this->currentPage + 1;
+                $htmlLinks .= "<li style=\"margin-right: 30px;\"><a class='page-link news-pagination' href='" . APP_URL . "/" . $uri . "/?page={$page}'> Next </a></li>";
+            }
+
+            $htmlLinks .= "</ul></nav>";
+        }
+
+        return isset($htmlLinks) ? $htmlLinks : '';
+    }
+
 
     public function getLinks($uri)
     {
         return $this->createPaginationLinks($uri);
+    }
+
+    public function getSimpleLinks($uri)
+    {
+        return $this->createSimplePaginationLinks($uri);
     }
 
 }

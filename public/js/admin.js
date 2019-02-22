@@ -222,3 +222,7 @@ $('#pass_change_from_container input[name="password_confirm"]').on('keyup', func
         $('#pass_change_from_container .admin-sumb-button').removeAttr('disabled');
     }
 });
+
+
+
+

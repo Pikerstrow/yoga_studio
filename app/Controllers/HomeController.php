@@ -9,11 +9,17 @@
 namespace App\Controllers;
 
 
+use App\Models\News;
+
 class HomeController
 {
     public function index()
     {
-        return _view('pages/index.twig');
+        $lastPost = News::last();
+
+        return _view('pages/index.twig', ['post' => $lastPost]);
     }
+
+
 
 }

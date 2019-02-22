@@ -175,7 +175,7 @@ class AdminController
 
         /*валідуємо новий пароль*/
         $data = $request->validate([
-            "password" => "required|max:15|min:8|special+number",
+            "password" => "required|max:15|min:8|special+number|latin",
         ]);
 
         /*перевіряємо чи співпадають значення полів password та password_confirm*/
@@ -203,7 +203,7 @@ class AdminController
         try {
             $admin->update($dataForStoring);
 
-            _session()->flash('success', 'Пароль успішно змінено!');
+            _session()->flash('success', 'Пароль змінено!');
             return _redirect()->to(APP_URL . "/admin/profile");
         } catch (DatabaseException $e){
             _log()->add($e->getError());

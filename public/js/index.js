@@ -94,3 +94,32 @@ function readMore() {
     moreText.style.display = "inline";
   }
 }
+
+
+/*CHECK IF NEW PASSWORD MATCHES PASSWORD CONFIRM FOR RESET PASSWORD PAGE*/
+$('#password-form-container input[name="password_confirm"]').on('keyup', function(){
+
+  let newPassword = $('#password-form-container input[name="password"]').val();
+  let passConfInput = $('#password-form-container').find('input[name="password_confirm"]');
+
+  if($(this).val() !== newPassword){
+    if($(passConfInput).hasClass('is-valid')){
+      $(passConfInput).removeClass('is-valid');
+    }
+    $(passConfInput).addClass('is-invalid');
+
+    $(passConfInput).closest('.form-group').find('div.invalid-feedback').html('Паролі не співпадають');
+
+    $('#password-form-container .password-button').attr('disabled', 'disabled');
+  } else {
+
+    $(passConfInput).closest('.form-group').find('div.invalid-feedback').html('');
+
+    if($(passConfInput).hasClass('is-invalid')){
+      $(passConfInput).removeClass('is-invalid');
+    }
+
+    $('#password-form-container .password-button').removeAttr('disabled');
+  }
+
+});

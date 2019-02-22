@@ -30,7 +30,7 @@ class AdminNewsController
         } else {
             $page = 1;
         }
-        $data = News::paginate("admin/news", 3, $page);
+        $data = News::paginate("admin/news", 10, $page);
         return _view('pages/admin/news.view.twig', ['news' => $data['objects'], 'links' => $data['links']]);
     }
 
@@ -82,7 +82,7 @@ class AdminNewsController
         /*Різні правила валідації для випадків, коли головне фото новини передано та коли - ні*/
         if ($request->hasFile('photo')) {
             $data = $request->validate([
-                "photo" => "required|maxsize:5120|image|proportions:1100*1100",
+                "photo" => "required|maxsize:5120|image|proportions:900*450",
                 "title" => "required|max:120|min:3",
                 "body" => "required|max:15000|min:10"
             ]);
@@ -177,7 +177,7 @@ class AdminNewsController
         /*Різні правила валідації для випадків, коли нове фото передано та коли - ні*/
         if($request->hasFile('photo')){
             $data = $request->validate([
-                "photo" => "required|maxsize:5120|image|proportions:1100*1100",
+                "photo" => "required|maxsize:5120|image|proportions:900*450",
                 "title" => "required|max:120|min:3",
                 "body" => "required|max:15000|min:10"
             ]);

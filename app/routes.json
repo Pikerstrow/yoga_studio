@@ -17,10 +17,27 @@
     "identifier": null,
     "auth": null
   },
-
   "forgot": {
     "controller": "AuthController",
     "method": "forgot",
+    "identifier": null,
+    "auth": null
+  },
+  "forgot/check-email": {
+    "controller": "AuthController",
+    "method": "forgotCheckEmail",
+    "identifier": null,
+    "auth": null
+  },
+  "reset": {
+    "controller": "AuthController",
+    "method": "resetPassword",
+    "identifier": null,
+    "auth": null
+  },
+  "forgot/update": {
+    "controller": "AuthController",
+    "method": "updatePassword",
     "identifier": null,
     "auth": null
   },

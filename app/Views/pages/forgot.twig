@@ -3,26 +3,41 @@
 {% block title %} Відновлення паролю {% endblock %}
 
 {% block content %}
+    {% if session.success is defined %}
+        <div id="password-form-container">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 mb-4 text-center">
+                    <i style="color: white" class="far fa-check-circle fa-6x"></i>
+                </div>
+                <div class="col-12 mb-2 text-center forgot-pass-instructions">
+                    {{ flash('success') }}
+                </div>
+                <div class="col-12">
+                    <a href="{{ url() }}" class="password-button col-12 btn btn-primary">На головну</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
     <div id="password-form-container">
         {{ showInfoBlock() }}
-        <form action="{{ url('password/forgot') }}" method="post">
+        <form action="{{ url('forgot/check-email') }}" method="post">
             <div class="row d-flex flex-row justify-content-center">
                 <div class="password-logo-container">
-                    <img width="100" src="images/loader/anahata.svg">
+                    <img width="100" src="{{ url("images/loader/anahata.svg") }}">
                 </div>
             </div>
             <div class="form-group password-form-group">
                 <input name="email" type="email"
                        class="form-control password-input {{ form_data.email_error ? 'is-invalid' : '' }}"
-                       aria-describedby="emailHelp"
                        placeholder="Введіть ваш email..." value="{{ form_data.email ?? '' }}">
                 <div class="invalid-feedback">
                     {{ form_data.email_error }}
                 </div>
             </div>
             <div class="form-group password-form-group">
-                <button class="password-button col-12" type="submit" class="btn btn-primary">Далі</button>
+                <button type="submit" class="password-button col-12 btn btn-primary">Далі</button>
             </div>
         </form>
     </div>
+    {%  endif %}
 {% endblock %}

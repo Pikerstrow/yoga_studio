@@ -29,7 +29,7 @@ class ImagesController
     public function uploadNewsMainPhoto(Request $request)
     {
         $data = $request->validate([
-            "photo" => "required|maxsize:5120|image|proportions:1100*1100"
+            "photo" => "required|maxsize:5120|image|proportions:900*450"
         ]);
 
         if(isset($data['errors'])){

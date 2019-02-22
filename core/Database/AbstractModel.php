@@ -46,6 +46,21 @@ abstract class AbstractModel
         }
     }
 
+    public static function last()
+    {
+        $connection = Db::getConnection();
+
+        try {
+            $query = "SELECT * FROM " . static::$dbTableName . " ORDER BY id DESC LIMIT 1";
+            $stmt = $connection->query($query);
+
+            return $stmt->fetchObject(static::class);
+
+        } catch (\PDOException $e) {
+            throw new DatabaseException($e->getMessage());
+        }
+    }
+
     public static function getByParam($dbColumn, $param)
     {
         $connection = Db::getConnection();
@@ -174,6 +189,40 @@ abstract class AbstractModel
 
             $data['objects'] = $objects;
             $data['links'] = $model->pagination->getLinks($uri);
+
+            return $data;
+
+        } catch (\PDOException $e) {
+            throw new DatabaseException($e->getMessage());
+        }
+
+        return null;
+    }
+
+    public static function simplePaginate($uri, $quantity, $page)
+    {
+        $connection = Db::getConnection();
+
+        $model = new static;
+        $model->pagination->perPage = $quantity;
+        $model->pagination->currentPage = $page;
+        $total = $model->pagination->totalItems = static::count();
+        $model->pagination->totalPages = ceil($total / $quantity);
+
+        $query = "SELECT * FROM " . static::$dbTableName . " ORDER BY id DESC LIMIT " . $model->pagination->perPage;
+        $query .= " OFFSET " . $model->pagination->offset();
+
+        try {
+            $stmt = $connection->query($query);
+
+            $objects = [];
+
+            while ($obj = $stmt->fetchObject(static::class)) {
+                $objects[] = $obj;
+            }
+
+            $data['objects'] = $objects;
+            $data['links'] = $model->pagination->getSimpleLinks($uri);
 
             return $data;
 

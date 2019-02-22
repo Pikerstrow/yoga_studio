@@ -1,12 +1,12 @@
 {% extends 'layouts/base.twig' %}
 
-{% block title %} {{ post.title}} {% endblock %}
+{% block title %} Новини {% endblock %}
 
-{%  block content %}
+{% block content %}
 
     <!-- Preloader -->
     <div class="preloader">
-        <img class="preloader-img" src="{{ url("images/loader/anahata.svg") }}" width="300px" height="300px"  align="middle">
+        <img class="preloader-img" src="{{ url("images/loader/anahata.svg") }}" width="300px" height="300px" align="middle">
     </div>
 
     <!-- Button To Top -->
@@ -23,15 +23,11 @@
                 </h1>
                 <ul class="News-main-text-ul">
                     <li style="padding-top: 5px;">
-                        <a class="News-main-text-a" href="{{ url()}}">Головна</a>
+                        <a class="News-main-text-a" href="{{ url() }}">Головна</a>
                     </li>
                     <i class="fas fa-circle News-arrow" aria-hidden="true"></i>
                     <li style="padding-top: 5px;">
-                        <a class="News-main-text-a" href="{{ url("news") }}">Новини</a>
-                    </li>
-                    <i class="fas fa-circle News-arrow" aria-hidden="true"></i>
-                    <li style="padding-top: 5px;">
-                        <a class="News-main-text-a News-active" href="{{ url("news", post.slug) }}">{{ post.title }}</a>
+                        <a class="News-main-text-a News-active" href="{{ url('news') }}">Новини</a>
                     </li>
                 </ul>
             </div>
@@ -42,39 +38,54 @@
     {{ include('parts/navigation.twig') }}
 
     <!-- News -->
+    {% if news is not empty %}
     <section class="pt-5 pb-5" id="News">
         <div class="container">
             <div class="row">
+                {{ showInfoBlock() }}
+                <div class="col-lg-10 offset-lg-1 text-center">
+                    {% for post in news %}
+                        <div class="news-container pb-5">
+                            <!-- News Author -->
+                            <h5 class="news-author pt-3">Anahata</h5>
+                            <!-- News Title -->
+                            <h3 class="news-title pb-1">{{ post.title}}</h3>
+                            <!-- News Date Publish -->
+                            <p class="news-date pb-3"><i class="far fa-calendar-alt"></i> {{ post.created_at | date("d-m-Y") }}</p>
+                            <!-- News Image -->
+                            <img class="img-fluid" src="{{ post.photo }}">
+                            <!-- News Text -->
+                            <p class="news-text pt-5">
+                                {{ postBodyPreview(post.body, 450) }}
+                            </p>
+                            <!-- News Read More Btn -->
+                            <a class="news-readMore" href="{{ url('news', post.slug) }}"> Читати далі... </a>
+                        </div>
 
-                <div class="col-lg-10 offset-lg-1">
+                        <!-- Separator -->
+                        <hr class="mb-5">
+                    {% endfor %}
 
-                    <!-- News Author -->
-                    <div class="text-center">
-                        <h5 class="news-author pt-3">Anahata</h5>
 
-                        <!-- News Title -->
-                        <h3 class="news-title pb-1">{{ post.title }}</h3>
 
-                        <!-- News Date Publish -->
-                        <p class="news-date pb-3"><i class="far fa-calendar-alt"></i> {{ post.created_at | date("d-m-Y") }}</p>
-                    </div>
-
-                    <!-- News Image -->
-                    <img class="img-fluid mb-4" src="{{ post.photo }}">
-
-                    <!-- News Text -->
-                    <div>
-                        {{ post.body | raw }}
-                    </div>
-                    <hr class="mb-5">
-                    <div class="col-12 text-center">
-                        <a href="{{ url('news') }}" class="news-pagination">Назад до новин</a>
-                    </div>
+                    <!-- Pagination -->
+                    {{ links | raw }}
                 </div>
-
             </div>
         </div>
     </section>
+    {% else %}
+        <section class="pt-5 pb-5" id="News">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1 text-center">
+                        <h3>Новини відсутні</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
 
     <!-- Contacts -->
     <section class="py-5 bg-dark" id="Contacts">
@@ -115,10 +126,12 @@
                 </div>
             </div>
             <div class="pt-5 social d-flex justify-content-center">
-                <a href="https://ru-ru.facebook.com/AnahataLutsk/" class="mx-2 social-icons wow fadeIn" data-wow-duration=".7s" data-wow-delay="0.8s">
+                <a href="https://ru-ru.facebook.com/AnahataLutsk/" class="mx-2 social-icons wow fadeIn"
+                   data-wow-duration=".7s" data-wow-delay="0.8s">
                     <i class="fab fa-facebook-f social-i"></i>
                 </a>
-                <a href="https://www.instagram.com/anahata.yoga.lutsk/" class="mx-2 social-icons wow fadeIn" data-wow-duration=".7s" data-wow-delay="1.0s">
+                <a href="https://www.instagram.com/anahata.yoga.lutsk/" class="mx-2 social-icons wow fadeIn"
+                   data-wow-duration=".7s" data-wow-delay="1.0s">
                     <i class="fab fa-instagram social-i"></i>
                 </a>
             </div>
@@ -134,7 +147,8 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <iframe src="https://snazzymaps.com/embed/101332" width="100%" height="505px" style="border:none;"></iframe>
+                    <iframe src="https://snazzymaps.com/embed/101332" width="100%" height="505px"
+                            style="border:none;"></iframe>
                 </div>
             </div>
         </div>

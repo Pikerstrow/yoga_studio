@@ -1,0 +1,18 @@
+<nav id="Navigation">
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a class="navLink" onclick="closeNav()" href="index.html#Main">Головна</a>
+            <a class="navLink" onclick="closeNav()" href="index.html#AboutMe">Про нас</a>
+            <a class="navLink" onclick="closeNav()" href="index.html#Gallery">Галерея</a>
+            <a class="navLink" onclick="closeNav()" href="index.html#Schedule">Розклад</a>
+            <a class="navLink" href="{{ url('news') }}">Новини</a>
+            <a class="navLink" onclick="closeNav()" href="#Contacts">Контакти</a>
+        </div>
+    </div>
+    <button class="hamburger hamburger--collapse" type="button" onclick="openNav()">
+      <span class="hamburger-box fixHamb" id="hambFadeIn">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+</nav>
