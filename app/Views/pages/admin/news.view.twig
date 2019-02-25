@@ -37,7 +37,7 @@
                                     <td style="min-width: 350px;">{{ postBodyPreview(post.body) }}</td>
                                     <td style="width: 100px">{{ post.created_at | date("d-m-Y") }}</td>
                                     <td class="admin-table-actions-td">
-                                        <a href="#" class="admin-news-view" title="Переглянути"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ url("news", post.slug) }}" class="admin-news-view" title="Переглянути"><i class="fas fa-eye"></i></a>
                                         <a href="{{ url("admin/news/edit", post.id) }}" class="admin-news-edit" title="Редагувати"><i class="fas fa-pencil-alt"></i></a>
                                         <form class="admin-delete-news-form" method="post" action="{{ url('admin/news/delete') }}">
                                             <input name="post_id" type="hidden" value="{{ post.id }}">
